@@ -1,0 +1,85 @@
+{
+  "sizes": [{
+      "cat": [{ "size": "size_xsmall",
+                "label": "x-smol"
+              },
+              {
+                "size": "size_small",
+                "label": "smol"
+              },
+              {
+                "size": "size_medium",
+                "label": "norml"
+              },
+              {
+                "size": "size_large",
+                "label": "cheezburgr"
+              }],
+      "dog": [{ "size": "size_xsmall",
+                "label": "pupperino"
+              },
+              {
+                "size": "size_small",
+                "label": "smol"
+              },
+              {
+                "size": "size_medium",
+                "label": "doggo"
+              },
+              {
+                "size": "size_large",
+                "label": "woofer"
+              }]
+    }],
+  "colors": ["Strawberry", "Blackberry", "Crazyberry", "Camo", "Night Moon", "Fire Orange"],
+  "items": [{
+    "name": "Catigory 5 Cat Harness",
+    "hasSizes": "true",
+    "sizestype": "cat",
+    "price": "49.99",
+    "thumbnail": "https://www.thecatconnection.com/mm5/graphics/00000001/CC_NewHarness_1.jpg",
+    "images": [ "https://www.thecatconnection.com/mm5/graphics/00000001/CC_NewHarness_1.jpg",
+                "https://www.thecatconnection.com/mm5/graphics/00000001/CC_NewHarness_2.jpg"
+    ],
+    "description": "Let your cat explore the great outdoors in safety and comfort with the lightweight Catigory-5 Cat Harness. Soft, comfortable and safe, the Kitty Holster is made from strong, utra-lightweight material and secured with wide velcro closures. Perfect for exercising the high-energy feline outdoors and for traveling with your cat.",
+    "featuredimage": "http://www.adventurecats.org/wp-content/uploads/2017/03/resize-2.jpg"
+    },
+    {
+    "name": "Yosemite Food Bowl",
+    "hasSizes": "false",
+    "price": "29.99",
+    "thumbnail": "//cdn.shopify.com/s/files/1/1577/4333/products/20501-Quencher-PacificBlue-Water_1024x1024.jpg?v=1499699372",
+    "images": [ "//cdn.shopify.com/s/files/1/1577/4333/products/20501-Quencher-PacificBlue-Water_1024x1024.jpg?v=1499699372",
+                "//cdn.shopify.com/s/files/1/1577/4333/products/20501-Quencher-PacificBlue-AllSizes_1024x1024.jpg?v=1499699372"
+    ],
+    "description": "The Yosemite Food Bowl is a twist on our original packable dog bowl. Minimize and simplify by storing and feeding from this multi-use fabric bowl. The integrated drawstring closure keeps kibble contained en route and accessible at mealtime. Great for hungry dogs on the trail, at base camp, or on the go. Available in two sizes to match your adventure.",
+    "featuredimage": "//cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Quencher_882x589.jpg?11031042928683062672"
+    },
+    {
+    "name": "MuddyPaws Dog Harness",
+    "hasSizes": "true",
+    "sizestype": "dog",
+    "price": "59.99",
+    "thumbnail": "//cdn.shopify.com/s/files/1/1577/4333/products/30301-DoublebackHarness-Right_640x.jpg?v=1495721792",
+    "images": [ "//cdn.shopify.com/s/files/1/1577/4333/products/30301-DoublebackHarness-Right_640x.jpg?v=1495721792",
+                "//cdn.shopify.com/s/files/1/1577/4333/products/30301-DoublebackHarness-Left_1024x1024.jpg?v=1495721792",
+                "//cdn.shopify.com/s/files/1/1577/4333/products/30301-DoublebackHarness-Buckle_1024x1024.jpg?v=1495721792"
+    ],
+    "description": "The Muddy Paws Pawesome Harness is a strength-rated belay harness that opens up areas that were previously difficult for dogs to access, while providing an increased level of safety, comfort and convenience. The Doubleback Harness is designed to safely lift and lower dogs in exposed areas, and is strength-rated to 2,000 lbf or 8.9 kN.",
+    "featuredimage": "//cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Doubleback-Harness_882x589.jpg?11031042928683062672"
+    },
+    {
+    "name": "WunderDog GPS Collar",
+    "hasSizes": "true",
+    "sizestype": "dog",
+    "price": "99.99",
+    "thumbnail": "//cdn.shopify.com/s/files/1/1577/4333/products/25502-TopRopeCollar-TwilightGray_640x.jpg?v=1500310812",
+    "images": [ "//cdn.shopify.com/s/files/1/1577/4333/products/25502-TopRopeCollar-TwilightGray_640x.jpg?v=1500310812",
+                "//cdn.shopify.com/s/files/1/1577/4333/products/25502-TopRopeCollar-MeadowGreen-BuckleUnlatched_1024x1024.jpg?v=1500310812",
+                "//cdn.shopify.com/s/files/1/1577/4333/products/25502-TopRopeCollar-MeadowGreen-BuckleLatched_1024x1024.jpg?v=1500310812"
+    ],
+    "description": "The Wunderdog GPS Collar combines our reliable GPS tracking system with our user-friendly, side-release buckle with our reflective webbing. Packed full of MuddyPaw’s essential collar features: a separate ID tag attachment point, strong and comfortable webbing, and aluminum V-ring.",
+    "featuredimage": "//cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Top-Rope-Collar_882x589.jpg?11031042928683062672"
+  }
+  ]
+}
