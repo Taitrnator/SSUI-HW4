@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SideBar from '../components/SideBar.js';
-const ProductList = () => (
+class ProductList extends Component {
+  constructor(props) {
+    super(props)
+    this.navToPage = props.navToPage;
+  }
+  render() {
+    return(
       <div>
-        <SideBar />
+        <SideBar navToPage={this.navToPage} />
         <article className="mp-hero">
             <img className="mp-article-img" src="//cdn.shopify.com/s/files/1/1577/4333/collections/Product-Category-Header-Image-Harnesses_882x589.jpg?v=1504634756" alt="shoptravelgear"/>
         </article>
@@ -44,6 +50,8 @@ const ProductList = () => (
                     </article>
                 </main>
             </div>
-)
+    )
+  }
+}
 
 export default ProductList
