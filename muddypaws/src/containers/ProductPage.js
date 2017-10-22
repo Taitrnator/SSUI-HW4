@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import FeaturedProducts from '../components/FeaturedProducts';
 import products from '../JSON/products.json';
-import { Link } from 'react-router-dom';
 
-const ProductPage = () => {
+class ProductPage extends React.Component {
+
   constructor(props) {
     super(props);
     this.activePage = props.activePage;
@@ -16,8 +17,10 @@ const ProductPage = () => {
   }
 
   activeItem(thumbnail = false) {
+
     for (var item in products.items) {
       if (products.items[item].name === this.activePage) {
+          console.log("found an item");
           return (thumbnail ? products.items[item].images[0] :products.items[item]);
       }
     }
@@ -33,20 +36,20 @@ const ProductPage = () => {
   }
 
   render() {
-    let item = this.state.activeItem,
+    console.log(this.state.activeItem);
+    var item = this.state.activeItem,
         sizes = (item.hasSizes ? this.getSizes(item.sizestype) : null);
-
 
     let colorControls = products.colors.map((e) => {
       let condensedName = e.trim().toLowerCase();
       return (
-        <label key={e} className={"color-option " + condensedName} htmlFor={e}><input type="radio" id={condensedName} name="color" value={e} /></label>
+        <label key={e} className={"color-option " + condensedName} htmlhtmlFor={e}><input type="radio" id={condensedName} name="color" value={e} /></label>
       )
     });
 
     let sizeControls = sizes.map((e) => {
       return(
-        <label key={e.size} htmlFor={e.size} className="size-option">{e.label}<input id={e.size} name="size" type="radio" value={e.label} checked="" /></label>
+        <label key={e.size} htmlhtmlFor={e.size} className="size-option">{e.label}<input id={e.size} name="size" type="radio" value={e.label} checked="" /></label>
       )
       });
 
@@ -70,13 +73,13 @@ const ProductPage = () => {
             <a>Write Review</a>
             <p id="mp-price">{item.price}</p>
             <div className="mp-size-ctrl mp-container">
-              <label className="mp-label" htmlFor="size-ctrl">Size: <strong id="active-size">Doggo</strong></label>
+              <label className="mp-label" htmlhtmlFor="size-ctrl">Size: <strong id="active-size">Doggo</strong></label>
               <div className="size-ctrl">
               {sizeControls}
               </div>
             </div>
             <div className="mp-color-ctrl mp-container">
-              <label className="mp-label" htmlFor="color-ctrl">Color: <strong id="active-color">Strawberry</strong></label>
+              <label className="mp-label" htmlhtmlFor="color-ctrl">Color: <strong id="active-color">Strawberry</strong></label>
               <div className="color-ctrl">
                 {colorControls}
               </div>

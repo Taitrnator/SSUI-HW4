@@ -32,7 +32,8 @@
               }]
     }],
   "colors": ["Strawberry", "Blackberry", "Crazyberry", "Camo", "Night Moon", "Fire Orange"],
-  "items": [{
+  "list": [{
+    "id": "CatHarness",
     "name": "Catigory 5 Cat Harness",
     "hasSizes": "true",
     "sizestype": "cat",
@@ -45,6 +46,7 @@
     "featuredimage": "http://www.adventurecats.org/wp-content/uploads/2017/03/resize-2.jpg"
     },
     {
+    "id": "FoodBowl",
     "name": "Yosemite Food Bowl",
     "hasSizes": "false",
     "price": "29.99",
@@ -56,6 +58,7 @@
     "featuredimage": "//cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Quencher_882x589.jpg?11031042928683062672"
     },
     {
+    "id": "DogHarness",
     "name": "MuddyPaws Dog Harness",
     "hasSizes": "true",
     "sizestype": "dog",
@@ -69,6 +72,7 @@
     "featuredimage": "//cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Doubleback-Harness_882x589.jpg?11031042928683062672"
     },
     {
+    "id": "GPSCollar",
     "name": "WunderDog GPS Collar",
     "hasSizes": "true",
     "sizestype": "dog",

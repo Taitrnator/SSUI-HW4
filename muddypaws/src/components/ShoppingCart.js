@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// function cartItem(props) {
-//     return (
-//         <section>
-//             <div className="left"></div>
-//             <div className="mid"></div>
-//             <div className="right"></div>
-//         </section>
-//     );
-// }
+import React from 'react';
+function cartItem(props) {
+    return (
+        <section>
+            <div className="left"></div>
+            <div className="mid"></div>
+            <div className="right"></div>
+        </section>
+    );
+}
 
-const ShoppingCart = () => {
-    constructor(props) {
-        super(props);
-        this.state = {
-            itemsInCart: Array(0).fill(null),
-            toggleClass: "hidden"
-        }
-    }
+class ShoppingCart extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          itemsInCart: Array(0).fill(null),
+          toggleClass: "hidden"
+      }
+  }
 
     addtoCart(item) {
         this.setState({

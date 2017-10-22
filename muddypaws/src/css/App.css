@@ -342,6 +342,7 @@ a.mp-button {
 }
 
 .mp-shopping-cart {
+  z-index: 10;
   right: 0;
   width: 300px;
   position: absolute;
