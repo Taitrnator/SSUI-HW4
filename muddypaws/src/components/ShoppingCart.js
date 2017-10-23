@@ -1,42 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
+import manageCart from '../services/manageCart';
 
-class ShoppingCart extends React.Component {
-  constructor(props) {
-      super(props);
-      this.itemsInCart = props.itemsInCart;
-      this.state = {
-          toggleClass: "hidden"
-      }
-  }
+class ShoppingCart extends Component {
+constructor(props) {
+  super(props);
+  this.removeFromCart=props.removeFromCart;
+  this.cartItems = props.cartItems;
+}
 
-    addtoCart(item) {
-        this.setState({
-            itemsInCart: {
-                name: item.name,
-                price: item.price
-            }
-        });
-        this.item = item;
-    }
-    calculateTotal() {
-
-    }
-    render() {
-      console.log(this.itemsInCart);
-      let itemsInCart = this.state.itemsInCart;
-      let cartList = this.itemsInCart.map((e) =>  {
+  render() {
+    let inventory = this.cartItems,
+        itemsInCart;
+    if(inventory !== null) {
+      itemsInCart = inventory.map((e, index) => {
         return (
-          <li key={e}>
-            <section>
-              <div className="left">Item</div>
-              <div className="mid">qty</div>
-              <div className="right">price</div>
-            </section>
-          </li>
+            <li key={index}>
+              <section className="mp-cart-item">
+                <div className="left"><img className="mp-thumbnail" src={e.thumbnail} /></div>
+                <div className="mid"><h4>{e.name}</h4><a className="mp-removelink" onClick={() => this.removeFromCart(e)}>Remove</a></div>
+                <div className="right"><h4 className="mp-product-price">{e.price}</h4></div>
+              </section>
+            </li>
         )
       })
     }
-
+    return (
+        <ul id="shoppingCart" className={"mp-shopping-cart " + this.props.toggleClass }>
+          <header><h3>Your Cart</h3></header>
+          <ul className="mp-cart-items">
+            {itemsInCart}
+          </ul>
+          <section className="mp-total">
+            <h4 className="left">Subtotal</h4>
+            <h4 className="right">${manageCart.calculateTotal()}</h4>
+          </section>
+          <button className="mp-button expand">Checkout</button>
+        </ul>
+    )
   }
+}
 
 export default ShoppingCart

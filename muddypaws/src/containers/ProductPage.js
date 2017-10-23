@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import FeaturedProducts from '../components/FeaturedProducts';
+import ReactDOM from 'react-dom';
 import products from '../JSON/products.json';
+import manageCart from '../services/manageCart.js';
+import FeaturedProducts from '../components/FeaturedProducts'
 
-class ProductPage extends React.Component {
+class ProductPage extends Component {
   constructor(props) {
     super(props);
-    this.activePage = props.activePage;
     this.addToCart = props.addToCart;
-    this.navToPage = props.navToPage;
+    this.activePage= props.activePage;
     this.state = {
-      activeItem: this.activeItem(),
+      activeItem: this.activeItem(this.activePage),
       activeColor: 'strawberry',
       activeSize: 'x_small',
       activeThumbnail: this.activeItem(true)
     }
   }
 
-  activeItem(thumbnail = false) {
+  activeItem(id, thumbnail = false) {
+    console.log(`retrieving ${id}`)
     for (var item in products.list) {
-      if (products.list[item].id === this.activePage) {
+      if (products.list[item].id === id) {
           return (thumbnail ? products.list[item].images[0] :products.list[item]);
       }
     }
@@ -37,16 +39,16 @@ class ProductPage extends React.Component {
     var item = this.state.activeItem,
         sizes = (item.hasSizes ? this.getSizes(item.sizestype) : null);
 
-    let colorControls = products.colors.map((e) => {
+    let colorControls = products.colors.map((e, index) => {
       let condensedName = e.trim().toLowerCase();
       return (
-        <label key={e} className={"color-option " + condensedName} htmlFor={e}><input type="radio" id={condensedName} name="color" value={e} /></label>
+        <label key={index} className={"color-option " + condensedName} htmlFor={e}><input type="radio" id={condensedName} name="color" value={e} /></label>
       )
     });
 
-    let sizeControls = sizes.map((e) => {
+    let sizeControls = sizes.map((e, index) => {
       return(
-        <label key={e.size} htmlFor={e.size} className="size-option">{e.label}<input id={e.size} name="size" type="radio" value={e.label} checked="" /></label>
+        <label key={index} htmlFor={e.size} className="size-option">{e.label}<input id={e.size} name="size" type="radio" value={e.label} checked="" /></label>
       )
       });
 
@@ -57,6 +59,7 @@ class ProductPage extends React.Component {
     });
 
     return (
+      <div>
       <main>
       <article className="mp-product-row">
           <section className="mp-thumbnails">
@@ -68,7 +71,7 @@ class ProductPage extends React.Component {
           <section className="mp-focused-item">
             <h4 id="mp-product-name">{item.name}</h4>
             <a>Write Review</a>
-            <p id="mp-price">{item.price}</p>
+            <p id="mp-price">${item.price}</p>
             <div className="mp-size-ctrl mp-container">
               <label className="mp-label" htmlFor="size-ctrl">Size: <strong id="active-size">Doggo</strong></label>
               <div className="size-ctrl">
@@ -81,7 +84,7 @@ class ProductPage extends React.Component {
                 {colorControls}
               </div>
             </div>
-            <button id="addToCart" className="mp-button expand" onClick={() => this.addToCart(item.id)}>Add to Cart</button>
+            <button id="addToCart" className="mp-button expand" onClick={() => manageCart.addItem(item.id)}>Add to Cart</button>
           </section>
         </article>
         <article className="product-feat-description">
@@ -90,8 +93,9 @@ class ProductPage extends React.Component {
           </section>
           <section className="product-feat-img"><img className="feat-img" src={item.featuredimage} alt="adventure-dog" /></section>
         </article>
-        <FeaturedProducts navToPage={this.navToPage} />
       </main>
+      <FeaturedProducts navToPage = { this.props.navToPage } activePage= {this.props.activePage} />
+    </div>
     )
   }
 }

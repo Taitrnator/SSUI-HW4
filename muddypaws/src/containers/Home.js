@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.css';
-import FeaturedProducts from '../components/FeaturedProducts.js';
 import SideBar from '../components/SideBar.js';
+import FeaturedProducts from '../components/FeaturedProducts'
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-          <SideBar />
+          <SideBar navToPage={this.navToPage}/>
           <article className="mp-hero">
               <section>
                   <h1>Go Arctic</h1>
@@ -19,7 +19,7 @@ class Home extends Component {
               </section>
               <img className="mp-article-img" src="https://cdn.shopify.com/s/files/1/1577/4333/files/Product-Page-Header-Polar-Trex_882x589.jpg?10840159090644357822" alt="winterdoggie"/>
           </article>
-          <FeaturedProducts navToPage={this.navToPage} />
+          <FeaturedProducts navToPage = { this.props.navToPage } />
       </div>
     )
   }

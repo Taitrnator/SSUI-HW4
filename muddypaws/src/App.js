@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Home from './containers/Home.js';
 import ProductList from './containers/ProductList.js';
 import ProductPage from './containers/ProductPage.js';
-import SideBar from './components/SideBar.js';
 import Header from './components/Header.js';
+import FeaturedProducts from './components/FeaturedProducts';
+import ShoppingCart from './components/ShoppingCart';
+import manageCart from './services/manageCart';
 import './css/App.css';
 
 
@@ -12,54 +14,60 @@ class App extends Component {
   super(props);
     this.state = {
       page: 2,
-      itemsInCart: []
+      cartItems: manageCart.getInventory(),
+      toggleClass: "hidden",
+      activePage: "home"
     };
   }
-  navToPage(arg) {
-    this.setState({page: arg})
+
+  // cart functionality here because idk where else to put it
+  addToCart(item) {
+    manageCart.addItem(item);
+    this.setState({cartItems: manageCart.getInventory(), toggleClass: ""}, this.forceUpdate());
   }
-  manageCart(item) {
-    this.setState({itemsInCart: item});
+  removeFromCart(item) {
+    manageCart.removeItem(item);
+    this.setState({cartItems: manageCart.getInventory()});
   }
   toggleCart() {
-      var css = (this.state.toggleClass === "hidden") ? "" : "hidden";
-      this.setState({"toggleClass" : css});
-  }
-  shoppingCart() {
-    return (
-      <ul className="rightnav">
-          <li id="cartButton" className="mp-cart" onClick={() => this.toggleCart() }><img src="https://taitrnator.github.io/SSUI-Homework-3/resources/images/shoppingcart.png" alt="shoppingcart"/></li>
-          <li id="shoppingCart" className={"mp-shopping-cart " + this.state.toggleClass }>
-            <header><h3>Your Cart</h3></header>
-            <ul>
-            </ul>
-            <section className="mp-total">
-              <h4 className="left">Subtotal</h4>
-              <h4 className="right">$0.00</h4>
-            </section>
-            <button className="mp-button expand">Checkout</button>
-          </li>
-      </ul>
-      )
+    var css = (this.state.toggleClass === "hidden") ? "" : "hidden";
+    this.setState({"toggleClass" : css});
   }
 
+
+  navToPage(page = 0, activePage = "home") {
+    this.setState(() => { return {page: page, activePage: activePage} });
+  }
   renderPageView() {
-    if(this.state.page === 0)
-      return <ProductPage activePage="CatHarness" addToCart={this.manageCart.bind(this)} navToPage={this.navToPage.bind(this)}/>
-    if(this.state.page === 1)
-      return <ProductList navToPage={this.navToPage.bind(this)} />
-    if(this.state.page === 2)
-      return <Home navToPage={this.navToPage.bind(this)} />
+    if(this.state.page === 0) {
+      return (
+        <div>
+        <ProductPage navToPage={this.navToPage.bind(this)} activePage={this.state.activePage} addToCart={this.addToCart.bind(this)} />);
+        </div>
+      )
+    }
+    if(this.state.page === 1) {
+      return (
+        <ProductList navToPage={this.navToPage.bind(this)} activePage={this.state.activePage} />
+      )
+    }
+    if(this.state.page === 2) {
+      return (
+        <div>
+        <Home navToPage={this.navToPage.bind(this)} />
+        </div>
+      )
+    }
   }
   render() {
-    console.log(`App items in cart? ${this.state.itemsInCart}`)
     return (
       <div>
-          <Header navToPage={this.navToPage.bind(this)} shoppingCart={this.shoppingCart.bind(this)}/>
+          <Header navToPage={this.navToPage.bind(this)} toggleCart={this.toggleCart.bind(this)}/>
+          <ShoppingCart toggleClass={this.state.toggleClass} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart.bind(this)} />
           {this.renderPageView()}
       </div>
     )
   }
 }
 
-export default App;
+export default App

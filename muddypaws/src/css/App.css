@@ -251,6 +251,10 @@ a.mp-button {
   max-width: 33px;
 }
 
+.mp-cart-items {
+  padding-left: 0;
+}
+
 .mp-cart-item {
   display: flex;
   justify-content: space-between;

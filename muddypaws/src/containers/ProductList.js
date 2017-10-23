@@ -3,12 +3,11 @@ import SideBar from '../components/SideBar.js';
 class ProductList extends Component {
   constructor(props) {
     super(props)
-    this.navToPage = props.navToPage;
   }
   render() {
     return(
       <div>
-        <SideBar navToPage={this.navToPage} />
+        <SideBar navToPage={this.props.navToPage} />
         <article className="mp-hero">
             <img className="mp-article-img" src="//cdn.shopify.com/s/files/1/1577/4333/collections/Product-Category-Header-Image-Harnesses_882x589.jpg?v=1504634756" alt="shoptravelgear"/>
         </article>
