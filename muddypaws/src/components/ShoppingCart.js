@@ -2,22 +2,15 @@ import React, { Component } from 'react';
 import manageCart from '../services/manageCart';
 
 class ShoppingCart extends Component {
-constructor(props) {
-  super(props);
-  this.removeFromCart=props.removeFromCart;
-  this.cartItems = props.cartItems;
-}
-
   render() {
-    let inventory = this.cartItems,
-        itemsInCart;
-    if(inventory !== null) {
-      itemsInCart = inventory.map((e, index) => {
+    let itemsInCart;
+    if(this.props.cartItems !== null) {
+      itemsInCart = this.props.cartItems.map((e, index) => {
         return (
             <li key={index}>
               <section className="mp-cart-item">
                 <div className="left"><img className="mp-thumbnail" src={e.thumbnail} /></div>
-                <div className="mid"><h4>{e.name}</h4><a className="mp-removelink" onClick={() => this.removeFromCart(e)}>Remove</a></div>
+                <div className="mid"><h4>{e.name}</h4><a className="mp-removelink" onClick={() => this.props.removeFromCart(e)}>Remove</a></div>
                 <div className="right"><h4 className="mp-product-price">{e.price}</h4></div>
               </section>
             </li>

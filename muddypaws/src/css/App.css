@@ -247,6 +247,11 @@ a.mp-button {
   width: 519px;
 }
 
+.mp-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .mp-cart img {
   max-width: 33px;
 }

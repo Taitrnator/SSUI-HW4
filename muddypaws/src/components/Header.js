@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
+import manageCart from '../services/manageCart'
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.navToPage = props.navToPage;
-    this.toggleCart = props.toggleCart;
-  }
   render() {
     return(
       <header>
@@ -14,7 +10,7 @@ class Header extends Component {
         </div>
           <nav className="mp-menu">
               <ul className="leftnav">
-                  <li onClick={() => this.navToPage(2)}>
+                  <li onClick={() => this.props.navToPage(2)}>
                     <img className="mp-logo" src="https://taitrnator.github.io/SSUI-Homework-3/resources/images/muddypaws-logo.png" alt="logo"/>
                   </li>
                   <li>
@@ -22,7 +18,7 @@ class Header extends Component {
                   </li>
               </ul>
               <ul className="rightnav">
-                  <li id="cartButton" className="mp-cart" onClick={() => this.toggleCart() }><img src="https://taitrnator.github.io/SSUI-Homework-3/resources/images/shoppingcart.png" alt="shoppingcart"/></li>
+                  <li id="cartButton" className="mp-cart" onClick={() => this.props.toggleCart() }><h5>{this.props.cartCount > 0 ? this.props.cartCount : ""}</h5><img src="https://taitrnator.github.io/SSUI-Homework-3/resources/images/shoppingcart.png" alt="shoppingcart"/></li>
               </ul>
           </nav>
       </header>

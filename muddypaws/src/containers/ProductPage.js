@@ -5,17 +5,6 @@ import manageCart from '../services/manageCart.js';
 import FeaturedProducts from '../components/FeaturedProducts'
 
 class ProductPage extends Component {
-  constructor(props) {
-    super(props);
-    this.addToCart = props.addToCart;
-    this.activePage= props.activePage;
-    this.state = {
-      activeItem: this.activeItem(this.activePage),
-      activeColor: 'strawberry',
-      activeSize: 'x_small',
-      activeThumbnail: this.activeItem(true)
-    }
-  }
 
   activeItem(id, thumbnail = false) {
     console.log(`retrieving ${id}`)
@@ -36,8 +25,13 @@ class ProductPage extends Component {
   }
 
   render() {
-    var item = this.state.activeItem,
-        sizes = (item.hasSizes ? this.getSizes(item.sizestype) : null);
+    var productId = this.props.activePage,
+        item = this.activeItem(productId),
+        sizes = (item.hasSizes ? this.getSizes(item.sizestype) : null),
+        addToCart = this.props.addToCart,
+        activeColor = 'strawberry',
+        activeSize = 'x_small',
+        activeThumbnail = this.activeItem(true);
 
     let colorControls = products.colors.map((e, index) => {
       let condensedName = e.trim().toLowerCase();

@@ -16,18 +16,19 @@ class App extends Component {
       page: 2,
       cartItems: manageCart.getInventory(),
       toggleClass: "hidden",
-      activePage: "home"
+      activePage: "home",
+      cartCount: manageCart.getInventory().length
     };
   }
 
   // cart functionality here because idk where else to put it
   addToCart(item) {
     manageCart.addItem(item);
-    this.setState({cartItems: manageCart.getInventory(), toggleClass: ""}, this.forceUpdate());
+    this.setState({cartItems: manageCart.getInventory(), cartCount: manageCart.getInventory().length + 1}, this.toggleCart());
   }
   removeFromCart(item) {
     manageCart.removeItem(item);
-    this.setState({cartItems: manageCart.getInventory()});
+    this.setState({cartItems: manageCart.getInventory(), cartCount: manageCart.getInventory().length });
   }
   toggleCart() {
     var css = (this.state.toggleClass === "hidden") ? "" : "hidden";
@@ -36,7 +37,7 @@ class App extends Component {
 
 
   navToPage(page = 0, activePage = "home") {
-    this.setState(() => { return {page: page, activePage: activePage} });
+    this.setState({page: page, activePage: activePage});
   }
   renderPageView() {
     if(this.state.page === 0) {
@@ -62,7 +63,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header navToPage={this.navToPage.bind(this)} toggleCart={this.toggleCart.bind(this)}/>
+          <Header navToPage={this.navToPage.bind(this)} toggleCart={this.toggleCart.bind(this)} cartItems={this.state.cartItems} cartCount={this.state.cartCount}/>
           <ShoppingCart toggleClass={this.state.toggleClass} cartItems={this.state.cartItems} removeFromCart={this.removeFromCart.bind(this)} />
           {this.renderPageView()}
       </div>
