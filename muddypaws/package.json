@@ -2,7 +2,6 @@
   "name": "muddypaws",
   "version": "0.1.0",
   "homepage": "https://taitrnator.github.io/SSUI-HW4",
-  "deploy" : "npm run build&&gh-pages -d build",
   "private": true,
   "dependencies": {
     "react": "^16.0.0",
@@ -18,5 +17,6 @@
   },
   "devDependencies": {
     "gh-pages": "^1.0.0"
-  }
+  },
+  "deploy": "npm run build&&gh-pages -d build"
 }
